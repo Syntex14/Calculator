@@ -1,0 +1,54 @@
+.main-body {
+    width: 350px;
+    height: 600px;
+    background-color: turquoise;
+}
+
+.display-container {
+    width: 300px;
+    height: 150px;
+    outline: dotted beige 3px;
+}
+
+#display {
+    width: 275px; 
+    height: 130px;
+    outline: dotted cornflowerblue 3px;
+}
+
+.button-containers {
+    width: 300px;
+    height: 450px;
+    outline: dotted coral 3px;
+}
+
+.button-row {
+    width: 275px;
+    height: 85px;
+    outline: dotted lavender 3px;
+    display: flex;
+}
+
+.button-single {
+    width: 65px;
+    height: 65px;
+    outline: dotted olivedrab 3px;
+}
+
+.button-row-three-buttons {
+    display: flex;
+
+}
+
+#button-row-equal-sign {
+    height: 155px;
+}
+
+.button-row-four-five-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.button-row-four-five-container > .button-row {
+    width: 210px;
+}

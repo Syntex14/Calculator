@@ -4,10 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Neo-Tokyo Calculator</title>
     <script src="script.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
 </head>
 <body>
+    <div class = "main-body">
+        <div class = "display-container">
+            <div id = "display"></div>
+        </div>
+        <div class = "button-containers">
+            <div class = "button-row">
+                <div class = "button-single" id = "clear-button">AC</div>
+                <div class = "button-single" id = "remainder-button">%</div>
+                <div class = "button-single" id = "multiply-button">*</div>
+                <div class = "button-single" id = "divide-button">/</div>
+            </div>
+            <div class = "button-row">
+                <div class = "button-single" id = "seven-button">7</div>
+                <div class = "button-single" id = "eight-button">8</div>
+                <div class = "button-single" id = "nine-button">9</div>
+                <div class = "button-single" id = "subtract-button">-</div>
+            </div>
+            <div class = "button-row">
+                <div class = "button-single" id = "four-button">4</div>
+                <div class = "button-single" id = "five-button">5</div>
+                <div class = "button-single" id = "six-button">6</div>
+                <div class = "button-single" id = "plus-button">+</div>
+            </div>
+            <div class="button-row-three-buttons"> <!-- being used to create space for the equal button as it will need space from the fourth and fifth row.-->
+            <div class = button-row-four-five-container> <!-- used as an a container for getting row four and five adjusted correctly-->
+                <div class = "button-row">
+                    <div class = "button-single" id = "one-button">1</div>
+                    <div class = "button-single" id = "two-button">2</div>
+                    <div class = "button-single" id = "three-button">3</div>
+                </div>
+                <div class = "button-row">
+                    <div class = "button-single" id = "zero-button">0</div>
+                    <div class = "button-single" id = "period-button">.</div>
+                    <div class = "button-single" id = "placeholder-button">placeholder</div>
+                </div>
+            </div>
+                <div class = "button-row" id = "button-row-equal-sign">
+                    <div id = "equal-button">=</div> 
+                </div>
+            </div>
+        </div>
+
+    </div>
+
     
 </body>
 </html>
