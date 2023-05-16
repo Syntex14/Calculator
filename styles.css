@@ -1,13 +1,35 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 90%;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: dotted purple 5px;
+
+    
+}
+
 .main-body {
-    width: 350px;
+    width: 400px;
     height: 600px;
     background-color: turquoise;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
 }
 
 .display-container {
     width: 300px;
     height: 150px;
-    outline: dotted beige 3px;
+    outline: dotted beige 3px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #display {
@@ -17,38 +39,62 @@
 }
 
 .button-containers {
-    width: 300px;
+    width: 350px;
     height: 450px;
     outline: dotted coral 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .button-row {
-    width: 275px;
+    width: 100%;
     height: 85px;
-    outline: dotted lavender 3px;
+     /* outline: dotted lavender 3px;  */
     display: flex;
+    align-items: center;
+    column-gap: 15px;
+    
+  
+    
 }
 
 .button-single {
-    width: 65px;
-    height: 65px;
+    width: 75px;
+    height: 70px;
     outline: dotted olivedrab 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+    
 }
 
 .button-row-three-buttons {
+    width: 350px;
     display: flex;
+    outline: 3px dotted burlywood;
+
+
 
 }
 
 #button-row-equal-sign {
-    height: 155px;
+   width: 87.5px;
+   outline: 3px dotted darkmagenta;
 }
 
 .button-row-four-five-container {
+    width: 262.5px;
     display: flex;
     flex-direction: column;
 }
 
 .button-row-four-five-container > .button-row {
-    width: 210px;
+    width: 100%;
+}
+
+.button-row-four-five-container > .button-single {
+    /* width: 82.5%;
+    height: 82.5%; */
 }
