@@ -81,7 +81,11 @@ body {
 
 #button-row-equal-sign {
    width: 87.5px;
+   height: 170px;
    outline: 3px dotted darkmagenta;
+   display: flex;
+   justify-content: center;
+   text-align: center;
 }
 
 .button-row-four-five-container {
