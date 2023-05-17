@@ -26,7 +26,7 @@ body {
 .display-container {
     width: 300px;
     height: 150px;
-    outline: dotted beige 3px; 
+    border: solid 3px #9D00FF;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,20 +35,20 @@ body {
 #display {
     width: 275px; 
     height: 130px;
-    outline: dotted cornflowerblue 3px;
+    border: solid 3px #9D00FF;
 }
 
 .button-containers {
-    width: 350px;
+    width: 365px;
     height: 450px;
-    outline: dotted coral 3px;
+    outline: solid 3px #1F51FF;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .button-row {
-    width: 100%;
+    width: 95%;
     height: 85px;
      /* outline: dotted lavender 3px;  */
     display: flex;
@@ -60,47 +60,41 @@ body {
 }
 
 .button-single {
+    font-size: 40px;
     width: 75px;
     height: 70px;
-    outline: dotted olivedrab 3px;
+    border: solid 3px #1F51FF;
     display: flex;
     align-items: center;
     justify-content: center;
-   
-    
-}
 
-.button-row-three-buttons {
-    width: 350px;
-    display: flex;
-    outline: 3px dotted burlywood;
-
-
-
-}
-
-#button-row-equal-sign {
-   width: 87.5px;
-   height: 170px;
-   outline: 3px dotted darkmagenta;
-   display: flex;
-   justify-content: center;
-   text-align: center;
-}
-
-.button-row-four-five-container {
-    width: 262.5px;
-    display: flex;
-    flex-direction: column;
-}
-
-.button-row-four-five-container > .button-row {
-    width: 100%;
 }
 
 #equal-button {
-    outline: 3px dotted black; 
-    width: 75px;
-    height: 155px;
-    margin-left: 3px;
+    font-size: 40px;
+    border: solid 3px white;
+    box-shadow: 
+     0 0 3px white,
+     0 0 7px white,
+     0 0 12px white,
+     0 0 19px #ff5f1f,
+     0 0 26px #ff5f1f,
+     inset 0 0 33px #ff5f1f;
+
+    color: #FF5F1F;
+    text-shadow: 
+     0 0 5px #ffffff,
+     0 0 9px #ffffff,
+     0 0 15px #ffffff,
+     0 0 24px #ff5f1f,
+     0 0 30px #ff5f1f,
+     0 0 36px #ff5f1f,
+     0 0 45px #ff5f1f;
+
+    
+}
+
+ #clear-button {
+    color: #FF3131;
+    border: solid 3px #FF3131;
 }
