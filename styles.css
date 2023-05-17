@@ -98,7 +98,9 @@ body {
     width: 100%;
 }
 
-.button-row-four-five-container > .button-single {
-    /* width: 82.5%;
-    height: 82.5%; */
+#equal-button {
+    outline: 3px dotted black; 
+    width: 75px;
+    height: 155px;
+    margin-left: 3px;
 }
