@@ -23,22 +23,23 @@ function divideOperation (numOne, numTwo) {
 
 let numOne;
 let numTwo;
-let operatorSelector;
+let resultantNum;
 
-function operate () { // will be called by an event clicker listener
+
+function operate (operatorSelector) { // will be called by an event clicker listener
     switch (operatorSelector) {
-        case "-":
-            addOperation(numOne, numTwo);
+        case "+":
+            resultantNum = addOperation(numOne, numTwo);
             break;
     
-        case "subtract":
-            subtractOperation(numOne, numTwo);
+        case "-":
+            resultantNum = subtractOperation(numOne, numTwo);
             break;
-        case "multiply":
-            multiplyOperation(numOne, numTwo);
+        case "*":
+            resultantNum = multiplyOperation(numOne, numTwo);
             break;
-        case "divide":
-            divideOperation(numOne, numTwo);
+        case "/":
+            resultantNum = divideOperation(numOne, numTwo);
 }
 }
 
@@ -80,18 +81,25 @@ function operate () { // will be called by an event clicker listener
         calcButtonListener.addEventListener("click", e => {
             let buttonClassName = e.target.className;
             let buttonInnerText = e.target.innerText;
-            let tempDigitDisplayStorage = "";
             if (buttonClassName === "button-single button-single-number") {
                 displayNumMainString += buttonInnerText;
                 displayNum();
             }   
             else if (buttonClassName === "button-single button-single-operator") {
+                getDisplayDigitsNumOne();
                 resetDisplayString();
                 operatorMainString = buttonInnerText;
             }
             else if (buttonClassName === "button-single button-single-clear") {
                 clearCalculator();
             }
+            else if (buttonClassName === "button-single button-single-equal-sign") {
+                getDisplayDigitsNumTwo();
+                resetDisplayString();
+                operate(operatorMainString);
+                displayResultant();
+            }
+        
            
         });
 
@@ -109,6 +117,19 @@ function operate () { // will be called by an event clicker listener
         operatorMainString = "";
         displayNum();
         resetDisplayString();
+    }
 
-        
+    function getDisplayDigitsNumOne() {
+        numOne = +displayNumMainString;
+    }
+
+    function getDisplayDigitsNumTwo() {
+        numTwo = +displayNumMainString;
+    }
+
+    function displayResultant() {
+        displayNumMainString = resultantNum;
+        numOne = resultantNum;
+        displayNum();
+
     }
