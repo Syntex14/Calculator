@@ -71,21 +71,39 @@ function operate () { // will be called by an event clicker listener
             // append displayNumMainString onto p (textContent, innerHTML)
             // append p on display div
 
+    
+
     let displayNumMainString = "";
+    let operatorMainString = "";
 
     const calcButtonListener = document.querySelector(".button-containers");
         calcButtonListener.addEventListener("click", e => {
             let buttonClassName = e.target.className;
+            let buttonInnerText = e.target.innerText;
             if (buttonClassName === "button-single button-single-number") {
-                displayNumMainString += e.target.innerText;
-               
+                displayNumMainString += buttonInnerText;
+                displayNum();
+            }   
+            else if (buttonClassName === "button-single button-single-operator") {
+                resetDisplayString();
+                operatorMainString = buttonInnerText;
             }
-            // if (0 <= e.target.innerText <= 9) {
-            //     displayNumMainString += e.target.innerText;
-            //      console.log(displayNumMainString);
-            // } // may have to take advantage of implicit coercion in this case
-
-
-            console.log(displayNumMainString);
+            else if (buttonClassName === "button-single button-single-clear") {
+                clearCalculator();
+            }
         });
+
+    function resetDisplayString() {
+        displayNumMainString = "";
+    }
     
+    function displayNum() {
+        const getDisplay = document.getElementById("display");
+        getDisplay.textContent = `${displayNumMainString}`;
+    }
+
+    function clearCalculator() {
+        displayNumMainString = "0";
+        operatorMainString = "";
+        displayNum();
+    }
