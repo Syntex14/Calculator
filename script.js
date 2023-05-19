@@ -80,6 +80,7 @@ function operate () { // will be called by an event clicker listener
         calcButtonListener.addEventListener("click", e => {
             let buttonClassName = e.target.className;
             let buttonInnerText = e.target.innerText;
+            let tempDigitDisplayStorage = "";
             if (buttonClassName === "button-single button-single-number") {
                 displayNumMainString += buttonInnerText;
                 displayNum();
@@ -91,6 +92,7 @@ function operate () { // will be called by an event clicker listener
             else if (buttonClassName === "button-single button-single-clear") {
                 clearCalculator();
             }
+           
         });
 
     function resetDisplayString() {
@@ -106,4 +108,7 @@ function operate () { // will be called by an event clicker listener
         displayNumMainString = "0";
         operatorMainString = "";
         displayNum();
+        resetDisplayString();
+
+        
     }
