@@ -44,19 +44,21 @@ function operate () { // will be called by an event clicker listener
 
 // display portion of the project
     // 1. Display Num on the display div
-        // a. create displayNumMainString variable
-            // i. create operatorMainString variable
+        // a. create displayNumMainString variable in global space
+            // i. in addEventListener, set e.target.innerText = to displayNumMainString
+            // ii. create operatorMainString variable
+
         // b. create a click event listener for button container
 
-            // i. if value is equal to number, call conditional
-                // conditional : 0 - 9, e.target.value must exist
-                    // if so, displayNumMainString += e.target.value
-    
-            // ii. if value is equal to operator, call conditional
-                // conditional: + OR - OR % OR *, e.target.must exist
-                    // if so, operatorMainString += e.target.value
-                    // input empty string into displayMainNumString
-
+            // i. create conditionals 
+                // a. if e.target.className = button-single-number
+                    // display = e.target.innerText;
+                // b. if e.target.className = button-single-operator
+                    // display = ""
+                    // operatorMainString += e.target.innerText;
+                // c. if e.target.className = button-single-equal
+                    // 
+                
             // iii. if value is equal to AC, call conditional
                 // clear out display variables - displayNumMainString and operatorMainString using empty quotes
                     // for displayNumMainString input a zero into the string to display to user that the fields have been cleared.
@@ -69,12 +71,21 @@ function operate () { // will be called by an event clicker listener
             // append displayNumMainString onto p (textContent, innerHTML)
             // append p on display div
 
+    let displayNumMainString = "";
+
     const calcButtonListener = document.querySelector(".button-containers");
         calcButtonListener.addEventListener("click", e => {
-            let displayNumMainString;
-            let operatorMainString;
-            if () // may have to take advantage of implicit coercion in this case
-            
+            let buttonClassName = e.target.className;
+            if (buttonClassName === "button-single button-single-number") {
+                displayNumMainString += e.target.innerText;
+               
+            }
+            // if (0 <= e.target.innerText <= 9) {
+            //     displayNumMainString += e.target.innerText;
+            //      console.log(displayNumMainString);
+            // } // may have to take advantage of implicit coercion in this case
 
 
+            console.log(displayNumMainString);
         });
+    
