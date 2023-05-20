@@ -94,10 +94,13 @@ function operate (operatorSelector) { // will be called by an event clicker list
                 clearCalculator();
             }
             else if (buttonClassName === "button-single button-single-equal-sign") {
+                if (stopEqualSign()) return;
+
                 getDisplayDigitsNumTwo();
                 resetDisplayString();
                 operate(operatorMainString);
                 displayResultant();
+                
             }
         
            
@@ -132,4 +135,7 @@ function operate (operatorSelector) { // will be called by an event clicker list
         numOne = resultantNum;
         displayNum();
 
+    }
+    function stopEqualSign() {
+        if (+displayNumMainString === resultantNum) { return true;}
     }
