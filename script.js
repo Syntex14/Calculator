@@ -86,6 +86,14 @@ function operate (operatorSelector) { // will be called by an event clicker list
                 displayNum();
             }   
             else if (buttonClassName === "button-single button-single-operator") {
+                if(operatorMainString !== "") {
+                    getDisplayDigitsNumTwo();
+                    operate(operatorMainString);
+                    resetDisplayString();
+                    displayResultant();
+                    operatorMainString = buttonInnerText;
+                }
+                
                 getDisplayDigitsNumOne();
                 resetDisplayString();
                 operatorMainString = buttonInnerText;
@@ -118,6 +126,9 @@ function operate (operatorSelector) { // will be called by an event clicker list
     function clearCalculator() {
         displayNumMainString = "0";
         operatorMainString = "";
+        numOne = 0;
+        numtwo = 0;
+        resultantNum = 0;
         displayNum();
         resetDisplayString();
     }
