@@ -86,17 +86,21 @@ function operate (operatorSelector) { // will be called by an event clicker list
                 displayNum();
             }   
             else if (buttonClassName === "button-single button-single-operator") {
-                if(operatorMainString !== "") {
-                    getDisplayDigitsNumTwo();
-                    operate(operatorMainString);
-                    resetDisplayString();
-                    displayResultant();
-                    operatorMainString = buttonInnerText;
-                }
+                // if(operatorMainString !== "") {
+                //     getDisplayDigitsNumTwo();
+                //     operate(operatorMainString);
+                //     resetDisplayString();
+                //     displayResultant();
+                //     operatorMainString = buttonInnerText;
+                // }
                 
-                getDisplayDigitsNumOne();
-                resetDisplayString();
-                operatorMainString = buttonInnerText;
+                // getDisplayDigitsNumOne();
+                // resetDisplayString();
+                // operatorMainString = buttonInnerText;
+                
+                operatorLogic(buttonInnerText);
+
+
             }
             else if (buttonClassName === "button-single button-single-clear") {
                 clearCalculator();
@@ -150,3 +154,42 @@ function operate (operatorSelector) { // will be called by an event clicker list
     function stopEqualSign() {
         if (+displayNumMainString === resultantNum) { return true;}
     }
+
+
+function operatorLogic (operator) {
+    if (operatorMainString === "") {
+        operatorSelectionPartOne(operator);
+    }
+}
+    // else {
+    //     operatorSelectionPartTwo()
+    // }
+
+
+
+function operatorSelectionPartOne (tempOperatorStorage) {
+    let tempOperator = "";
+
+        function operatorSelector() {
+            return tempOperator = tempOperatorStorage;
+        }
+        operatorSelector();
+    }
+
+            
+    
+//     getDigitOne
+//     resetDisplay
+//     use parameter to pass tempOperator to another function to store tempOp to OpMain
+    
+// }
+
+/*
+
+
+function operatorSelectionPartTwo () {
+
+
+}
+
+*/
