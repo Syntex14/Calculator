@@ -74,7 +74,7 @@ function operate (operatorSelector) { // will be called by an event clicker list
 
     
 
-    let displayNumMainString = "";
+    // let displayNumMainString = "";
     let operatorMainString = "";
 
     const calcButtonListener = document.querySelector(".button-containers");
@@ -82,23 +82,12 @@ function operate (operatorSelector) { // will be called by an event clicker list
             let buttonClassName = e.target.className;
             let buttonInnerText = e.target.innerText;
             if (buttonClassName === "button-single button-single-number") {
-                displayNumMainString += buttonInnerText;
-                displayNum();
+                display.displayString += buttonInnerText;
+                display.display();
+    
             }   
             else if (buttonClassName === "button-single button-single-operator") {
-                // if(operatorMainString !== "") {
-                //     getDisplayDigitsNumTwo();
-                //     operate(operatorMainString);
-                //     resetDisplayString();
-                //     displayResultant();
-                //     operatorMainString = buttonInnerText;
-                // }
-                
-                // getDisplayDigitsNumOne();
-                // resetDisplayString();
-                // operatorMainString = buttonInnerText;
-                
-                operatorLogic(buttonInnerText);
+               
 
 
             }
@@ -106,17 +95,18 @@ function operate (operatorSelector) { // will be called by an event clicker list
                 clearCalculator();
             }
             else if (buttonClassName === "button-single button-single-equal-sign") {
-                if (stopEqualSign()) return;
-
-                getDisplayDigitsNumTwo();
-                resetDisplayString();
-                operate(operatorMainString);
-                displayResultant();
                 
             }
         
            
         });
+
+
+    let display = {
+        displayString: "",
+        display: displayNum,
+        resetDisplay: resetDisplayString,
+    }
 
     function resetDisplayString() {
         displayNumMainString = "";
@@ -124,14 +114,14 @@ function operate (operatorSelector) { // will be called by an event clicker list
     
     function displayNum() {
         const getDisplay = document.getElementById("display");
-        getDisplay.textContent = `${displayNumMainString}`;
+        getDisplay.textContent = `${display.displayString}`;
     }
 
     function clearCalculator() {
         displayNumMainString = "0";
         operatorMainString = "";
         numOne = 0;
-        numtwo = 0;
+        numTwo = 0;
         resultantNum = 0;
         displayNum();
         resetDisplayString();
@@ -169,27 +159,26 @@ function operatorLogic (operator) {
 
 function operatorSelectionPartOne (tempOperatorStorage) {
     let tempOperator = "";
+    // getDisplayDigitsNumOne(); // combine  this with permantly setting mainOperator
+    // resetDisplayString();
 
         function operatorSelector() {
-            return tempOperator = tempOperatorStorage;
+             tempOperator = tempOperatorStorage;
         }
-        operatorSelector();
+        return operatorSelector;
+        
     }
 
+
             
-    
-//     getDigitOne
-//     resetDisplay
-//     use parameter to pass tempOperator to another function to store tempOp to OpMain
-    
-// }
-
 /*
+    function digitLogic() {
+        if (numOne === "undefined") {
+            getNumbers();
+        }
+    }
 
-
-function operatorSelectionPartTwo () {
-
-
+function getNumbers(num) {
+    num = buttonInnerText
 }
-
 */
