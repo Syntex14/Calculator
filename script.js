@@ -26,8 +26,8 @@ let numTwo;
 let resultantNum;
 
 
-function operate (operatorSelector) { // will be called by an event clicker listener
-    switch (operatorSelector) {
+function operate (operator) { // will be called by an event clicker listener
+    switch (operator) {
         case "+":
             resultantNum = addOperation(numOne, numTwo);
             break;
@@ -94,7 +94,19 @@ function operate (operatorSelector) { // will be called by an event clicker list
                 clearCalculator();
             }
             else if (buttonClassName === "button-single button-single-equal-sign") {
-                
+                if (stopEqualSign()) return;
+                // 1. store digit two
+                // 2. call operate()
+                // 3. reset display
+                // 4. set resultant equal to display.displayString
+                // 4. show display of result
+                // 5. set numOne = getdigit
+                numTwo = operator.getDigits();
+                operate(operatorMainString);
+                display.resetDisplay();
+                display.displayString = resultantNum;
+                display.display();
+                numOne = resultantNum;
             }
         
            
@@ -111,7 +123,7 @@ function operate (operatorSelector) { // will be called by an event clicker list
         tempOperatorString: "",
         operatorPathWay: operatorLogic,
         resetDisplay: resetDisplayString,
-        getDigit: getDigits,
+        getDigits: getDigit,
         displayResult: displayResultant,
         
     
@@ -129,6 +141,7 @@ function operate (operatorSelector) { // will be called by an event clicker list
 
     function clearCalculator() {
         display.displayString = "0";
+        operator.tempOperatorString = "";
         operatorMainString = "";
         numOne = 0;
         numTwo = 0;
@@ -149,7 +162,7 @@ function operate (operatorSelector) { // will be called by an event clicker list
 
     }
     function stopEqualSign() {
-        if (+displayNumMainString === resultantNum) { return true;}
+        if (numOne === resultantNum) { return true;}
     }
 
 
@@ -227,9 +240,10 @@ function digitLogicPathway (digitString, operatorObj) {
 
 function middleOperations() {
     if (!middleOperationsCheck) {
-        numOne = operator.getDigitOne();
+        numOne = operator.getDigits();
         operatorMainString = operator.tempOperatorString;
         display.resetDisplay();
         middleOperationsCheck = true;
     }
 }
+
