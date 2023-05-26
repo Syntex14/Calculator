@@ -82,8 +82,6 @@ function operate (operator) { // will be called by an event clicker listener
             let buttonClassName = e.target.className;
             let buttonInnerText = e.target.innerText;
             if (buttonClassName === "button-single button-single-number") {
-                // display.displayString += buttonInnerText;
-                // display.display();
                 digitLogicPathway(buttonInnerText, operator);
             }   
             else if (buttonClassName === "button-single button-single-operator") { 
@@ -146,6 +144,7 @@ function operate (operator) { // will be called by an event clicker listener
         numOne = 0;
         numTwo = 0;
         resultantNum = 0;
+        middleOperationsCheck = false;
         displayNum();
         resetDisplayString();
     }
@@ -239,11 +238,11 @@ function digitLogicPathway (digitString, operatorObj) {
 }
 
 function middleOperations() {
-    if (!middleOperationsCheck) {
-        numOne = operator.getDigits();
-        operatorMainString = operator.tempOperatorString;
-        display.resetDisplay();
-        middleOperationsCheck = true;
-    }
+        if (!middleOperationsCheck) {
+            numOne = operator.getDigits();
+            operatorMainString = operator.tempOperatorString;
+            display.resetDisplay();
+            middleOperationsCheck = true;
+        }
 }
 
