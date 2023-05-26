@@ -82,13 +82,12 @@ function operate (operatorSelector) { // will be called by an event clicker list
             let buttonClassName = e.target.className;
             let buttonInnerText = e.target.innerText;
             if (buttonClassName === "button-single button-single-number") {
-                display.displayString += buttonInnerText;
-                display.display();
-    
+                // display.displayString += buttonInnerText;
+                // display.display();
+                digitLogicPathway(buttonInnerText, operator);
             }   
-            else if (buttonClassName === "button-single button-single-operator") {
-               
-
+            else if (buttonClassName === "button-single button-single-operator") { 
+               operator.operatorPathWay(buttonInnerText, operator);
 
             }
             else if (buttonClassName === "button-single button-single-clear") {
@@ -108,8 +107,19 @@ function operate (operatorSelector) { // will be called by an event clicker list
         resetDisplay: resetDisplayString,
     }
 
+    let operator = {
+        tempOperatorString: "",
+        operatorPathWay: operatorLogic,
+        resetDisplay: resetDisplayString,
+        getDigit: getDigits,
+        displayResult: displayResultant,
+        
+    
+
+    }
+
     function resetDisplayString() {
-        displayNumMainString = "";
+        display.displayString = "";
     }
     
     function displayNum() {
@@ -118,7 +128,7 @@ function operate (operatorSelector) { // will be called by an event clicker list
     }
 
     function clearCalculator() {
-        displayNumMainString = "0";
+        display.displayString = "0";
         operatorMainString = "";
         numOne = 0;
         numTwo = 0;
@@ -127,17 +137,14 @@ function operate (operatorSelector) { // will be called by an event clicker list
         resetDisplayString();
     }
 
-    function getDisplayDigitsNumOne() {
-        numOne = +displayNumMainString;
-    }
-
-    function getDisplayDigitsNumTwo() {
-        numTwo = +displayNumMainString;
+    function getDigit() {
+        return +display.displayString;
     }
 
     function displayResultant() {
-        displayNumMainString = resultantNum;
+        display.displayString = resultantNum;
         numOne = resultantNum;
+        resetDisplayString();
         displayNum();
 
     }
@@ -146,39 +153,83 @@ function operate (operatorSelector) { // will be called by an event clicker list
     }
 
 
-function operatorLogic (operator) {
+function operatorLogic (operator, operatorObj) {
     if (operatorMainString === "") {
-        operatorSelectionPartOne(operator);
+        let resultantOperator = operatorSelectionPartOne(operator);
+        operatorObj.tempOperatorString = resultantOperator;
+            // why isn't operator.tempOperatorString not updating?
+       
     }
 }
-    // else {
-    //     operatorSelectionPartTwo()
-    // }
+
 
 
 
 function operatorSelectionPartOne (tempOperatorStorage) {
     let tempOperator = "";
-    // getDisplayDigitsNumOne(); // combine  this with permantly setting mainOperator
-    // resetDisplayString();
-
+   
         function operatorSelector() {
              tempOperator = tempOperatorStorage;
         }
-        return operatorSelector;
-        
+        operatorSelector();
+    return tempOperator;
     }
 
+// to do 5/26
+    // 1. check if digit one and operator fully work
+        // e.g. if we can process digit one and operator
+    // 2. start working on digit 2 and related processes
+        // e.g. what functions, conditionals, or objects do we need to complete this part of the project
+    
 
-            
-/*
-    function digitLogic() {
-        if (numOne === "undefined") {
-            getNumbers();
-        }
+// digit 2
+    // for event clicker conditional
+        // function digitLogicPathway
+    // digitLogicPathway
+     // create a conditional
+        // D1, op => digit 2
+        // D2 , op ! => digit 1
+            //digitLogicPartOne, digit 1
+                // display.displayString += buttonInnerText
+                // display.display();
+            //digitLogicPartTwo, digit 2
+                // create a flag variable that checks to see if the needed functions have already been run once before adding digit two to display 
+                    // flag variable = middleOperationsCheck = false;
+                    // function middleOperations
+                        // conditional : if(!middleOperationsCheck) 
+                            // numOne = display.display
+                            // operatorMainString = tempOperatorString;
+                            // display.resetDisplay;
+                        // middleOperationsCheck = true;
+                // display.displayString += buttonInnerText
+                // display.display();
+
+let middleOperationsCheck = false;
+
+function digitLogicPathway (digitString, operatorObj) {
+    if (operatorObj.tempOperatorString === "") {
+        display.displayString += digitString;
+        display.display();
     }
 
-function getNumbers(num) {
-    num = buttonInnerText
+    // middle operations is never reached as the conditional for it isn't reached
+    // middle operations needs to happen in the middle of these two conditionals.
+    // the issue I'm having is that how can we tell if the user is done with inputting digits into the calculator?
+    // we can instead use tempOperatorString
+    // if the user is done with inputting digits, the next step is an operator
+
+    else if(operatorObj.tempOperatorString !== "") { 
+        middleOperations();
+        display.displayString += digitString;
+        display.display();
+    }
 }
-*/
+
+function middleOperations() {
+    if (!middleOperationsCheck) {
+        numOne = operator.getDigitOne();
+        operatorMainString = operator.tempOperatorString;
+        display.resetDisplay();
+        middleOperationsCheck = true;
+    }
+}
