@@ -74,8 +74,8 @@ function operate (operator) { // will be called by an event clicker listener
 
     
 
-    // let displayNumMainString = "";
     let operatorMainString = "";
+    let equalSignCheck = false;
 
     const calcButtonListener = document.querySelector(".button-containers");
         calcButtonListener.addEventListener("click", e => {
@@ -83,6 +83,7 @@ function operate (operator) { // will be called by an event clicker listener
             let buttonInnerText = e.target.innerText;
             if (buttonClassName === "button-single button-single-number") {
                 digitLogicPathway(buttonInnerText, operator);
+                
             }   
             else if (buttonClassName === "button-single button-single-operator") { 
                operator.operatorPathWay(buttonInnerText, operator);
@@ -92,21 +93,28 @@ function operate (operator) { // will be called by an event clicker listener
                 clearCalculator();
             }
             else if (buttonClassName === "button-single button-single-equal-sign") {
-                if (stopEqualSign()) return;
-                // 1. store digit two
-                // 2. call operate()
-                // 3. reset display
-                // 4. set resultant equal to display.displayString
-                // 4. show display of result
-                // 5. set numOne = getdigit
+                if (equalSignCheck === true) return;
+                stopEqualSign();
                 numTwo = operator.getDigits();
                 operate(operatorMainString);
                 display.resetDisplay();
                 display.displayString = resultantNum;
                 display.display();
                 numOne = resultantNum;
+                operatorMainString = "";
+                middleOperationsCheck = false;
             }
-        
+
+    
+        // when I click the equal sign, what do I need the conditional to do?
+            // get numTwo
+            // do operation using operatorMainString
+            // reset the display
+            // Equal displayString to the resultantNum
+            // display the resultant num
+            // reset OperatorMainString
+            // reset MiddleOperationsCheck
+            
            
         });
 
@@ -161,7 +169,9 @@ function operate (operator) { // will be called by an event clicker listener
 
     }
     function stopEqualSign() {
-        if (numOne === resultantNum) { return true;}
+        if (!equalSignCheck) {
+            equalSignCheck = true;
+        }
     }
 
 
@@ -170,9 +180,20 @@ function operatorLogic (operator, operatorObj) {
         let resultantOperator = operatorSelectionPartOne(operator);
         operatorObj.tempOperatorString = resultantOperator;
             // why isn't operator.tempOperatorString not updating?
+                // reduanct code
        
     }
 }
+// else if (operatorMainString !== "") 
+    // store D2
+    // call operate 
+    // reset display
+    // show display of result
+    // numOne = result
+    // need to get new operator into calculator
+        // operator.tempOperatorString
+            // then need to use operatorSelectionPartOne just in case user wants to change operator
+    
 
 
 
@@ -243,6 +264,7 @@ function middleOperations() {
             operatorMainString = operator.tempOperatorString;
             display.resetDisplay();
             middleOperationsCheck = true;
+            equalSignCheck = false;
         }
 }
 
