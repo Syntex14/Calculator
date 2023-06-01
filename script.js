@@ -183,8 +183,18 @@ function operatorLogic (operator, operatorObj) {
                 // reduanct code
        
     }
-}
-// else if (operatorMainString !== "") 
+
+    else if (operatorMainString !== "") {
+        numTwo = operatorObj.getDigits();
+        operatorObj.tempOperatorString = operatorSelectionPartOne(operator);
+        operate(operatorMainString);
+        display.resetDisplay();
+        display.displayString = resultantNum;
+        display.display();
+        numOne = resultantNum;
+        operatorMainString = "";
+        middleOperationsCheck = false;
+    }
     // store D2
     // call operate 
     // reset display
@@ -193,7 +203,7 @@ function operatorLogic (operator, operatorObj) {
     // need to get new operator into calculator
         // operator.tempOperatorString
             // then need to use operatorSelectionPartOne just in case user wants to change operator
-    
+}
 
 
 
